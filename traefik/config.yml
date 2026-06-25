@@ -1,0 +1,3 @@
+# Dynamic configuration for non-Docker services
+# Docker services are auto-discovered via labels
+# This file is watched by Traefik for changes

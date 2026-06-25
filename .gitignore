@@ -1,0 +1,6 @@
+.env
+data/
+__pycache__/
+*.pyc
+n8n-data/
+*.db

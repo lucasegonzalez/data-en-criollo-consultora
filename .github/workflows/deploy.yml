@@ -1,0 +1,45 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'hermes/**'
+      - 'docker-compose.yml'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_BACKEND: ${{ github.repository }}/backend
+  IMAGE_HERMES: ${{ github.repository }}/hermes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_BACKEND }}:latest
+      
+      - name: Build and push hermes
+        uses: docker/build-push-action@v5
+        with:
+          context: ./hermes
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_HERMES }}:latest
