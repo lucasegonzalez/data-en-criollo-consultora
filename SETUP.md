@@ -1,31 +1,21 @@
-# Setup — Hetzner VPS + Despliegue Inicial
+# Setup — Baires Host VPS + Despliegue Inicial
 
 Guía paso a paso para poner en producción la infraestructura de consultoría.
 
 ---
 
-## 1. Crear cuenta en Hetzner
+## 1. Crear cuenta en Baires Host
 
-1. Andá a [hetzner.com](https://www.hetzner.com) y registrate.
-2. Verificá tu identidad (documento + dirección).
-3. Agregá método de pago (tarjeta o transferencia).
-4. Esperá la aprobación (suele ser instantánea o <24h).
+1. Andá a [baires.host/es/cloud-vps](https://baires.host/es/cloud-vps).
+2. Elegí **VPS Basic** (2 vCPU, 4 GB RAM, 40 GB NVMe).
+3. Pagá con **Mercado Pago** (~$20.280 ARS/mes).
+4. Creá tu cuenta durante el checkout.
 
-## 2. Provisionar VPS (CX22)
+## 2. Provisionar VPS
 
-1. Entrá al [Cloud Console](https://console.hetzner.cloud).
-2. Creá un proyecto nuevo (ej: `data-en-criollo`).
-3. Click **Add Server**:
-   - **Location**: Falkenstein o Nuremberg (los más baratos)
-   - **Image**: Ubuntu 24.04 LTS
-   - **Type**: CX22 (2 vCPU, 4 GB RAM, 40 GB SSD)
-   - **SSH Keys**: Agregá tu clave pública (`~/.ssh/id_ed25519.pub`)
-   - **Name**: `consultora-vps`
-   - **Firewall**: Creá uno nuevo (solo puertos 22, 80, 443)
-4. Click **Create & Buy now**.
-5. Anotá la **IP pública** que te asignan.
-
-> 💡 Si querés IPv4 + IPv6, activalo antes de crear. Totalmente gratis.
+1. En el panel de Baires Host, esperá la activación (minutos).
+2. Te llega un mail con la IP y credenciales.
+3. Anotá la **IP pública** que te asignan.
 
 ## 3. Conectar por SSH
 
