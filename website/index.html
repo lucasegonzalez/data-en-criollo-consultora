@@ -628,7 +628,7 @@ svg.inked{filter:url(#inkfilter);}
           <li>Punto de equilibrio por producto</li>
           <li>Plan estratégico trimestral priorizado</li>
           <li>Reunión mensual de estrategia</li>
-          <li>Prioridad por WhatsApp / email (48 hs)</li>
+          <li>Prioridad por email (48 hs)</li>
         </ul>
         <a href="#frm" class="pcta">QUIERO UN CUPO ▸</a>
       </div>
@@ -675,7 +675,7 @@ svg.inked{filter:url(#inkfilter);}
     <p class="ds">30 minutos, sin costo y sin compromiso. Me contás tu negocio y la decisión que tenés entre manos; yo te digo, con honestidad, si puedo ayudarte y cómo. Si encajamos, seguimos. Si no, te vas igual con un par de ideas para aplicar.</p>
     <form id="contactForm" novalidate>
       <div class="fg" id="fgNombre"><label for="fNombre">Tu nombre y tu negocio</label><input type="text" id="fNombre" name="nombre" autocomplete="name" required><span class="er">Falta tu nombre — sin eso no sabemos a quién cebarle el mate.</span></div>
-      <div class="fg" id="fgEmail"><label for="fEmail">Tu email o WhatsApp</label><input type="text" id="fEmail" name="contacto" autocomplete="email" required><span class="er">Dejanos un email o teléfono para coordinar la llamada.</span></div>
+      <div class="fg" id="fgEmail"><label for="fEmail">Tu email</label><input type="email" id="fEmail" name="contacto" autocomplete="email" required><span class="er">Dejanos tu email para coordinar la llamada.</span></div>
             <div class="fg" id="fgFact"><label for="fFact">Facturación mensual aproximada</label><select id="fFact" name="facturacion" required><option value="">Elegí un rango…</option><option value="lt_5m">Menos de $5M / mes</option><option value="5m_15m">$5M a $15M / mes</option><option value="15m_30m">$15M a $30M / mes</option><option value="gt_30m">Más de $30M / mes</option><option value="prefiero_no">Prefiero no decirlo</option></select><span class="er">Elegí un rango — nos ayuda a preparar la llamada.</span></div>
       <div class="fg" id="fgFuente"><label for="fFuente">¿Cómo nos encontraste?</label><select id="fFuente" name="fuente" required><option value="">Elegí una opción…</option><option value="youtube">YouTube</option><option value="linkedin">LinkedIn</option><option value="instagram">Instagram</option><option value="directo">Directo</option><option value="otro">Otro</option></select><span class="er">¿De dónde viniste? Nos sirve para saber qué funciona.</span></div>
 <div class="fg" id="fgMsg"><label for="fMsg">Contanos brevemente: ¿qué te trae por acá?</label><textarea id="fMsg" name="mensaje" rows="4" placeholder="Ej: tengo una fábrica de pastas y no sé si me conviene sumar un segundo turno, o si mi producto estrella me deja plata o me la come…" required></textarea><span class="er">Contanos aunque sea una línea. Con eso llegamos preparados a la llamada.</span></div>
@@ -747,7 +747,7 @@ svg.inked{filter:url(#inkfilter);}
     let ok=true;
     const mark=(el,bad)=>{el.closest('.fg').classList.toggle('bad',bad);if(bad)ok=false;};
     mark(n,!n.value.trim());
-    mark(m,m.value.trim().length<5);
+    mark(m,!m.value.trim().match(/^\S+@\S+\.\S+$/));
     mark(x,!x.value.trim());
     mark(fc,!fc.value);
     mark(fu,!fu.value);
