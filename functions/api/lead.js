@@ -23,7 +23,7 @@ const FUENTE = {
   otro: "Otro",
 };
 
-const TIPO = { email: "Email", whatsapp: "WhatsApp" };
+const TIPO = "Email";
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -42,7 +42,6 @@ export async function onRequestPost(context) {
   // Extract and validate
   const nombre = (body.nombre || "").trim();
   const contacto = (body.contacto || "").trim();
-  const tipo = (body.tipo || "email").toLowerCase();
   const facturacion = (body.facturacion || "").trim();
   const mensaje = (body.mensaje || "").trim();
   const fuente = (body.fuente || "directo").toLowerCase();
@@ -59,7 +58,7 @@ export async function onRequestPost(context) {
     fields: {
       Nombre: nombre,
       Contacto: contacto,
-      Tipo: TIPO[tipo] || "Email",
+      Tipo: TIPO,
       Mensaje: mensaje,
       Fuente: FUENTE[fuente] || "Directo",
       Estado: "Nuevo",
